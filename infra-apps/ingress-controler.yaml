@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@gitlab.com:idancohen55/argocd-demo-crm-apps.git
+    repoURL: git@github.com:iddchn/notely-kubernetes.git
     targetRevision: HEAD
     path: infra-apps/external-charts/ingress-nginx
     helm:

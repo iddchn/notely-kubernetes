@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@gitlab.com:idancohen55/argocd-demo-crm-apps.git
+    repoURL: git@github.com:iddchn/notely-kubernetes.git
     targetRevision: HEAD
-    path: crm-app
+    path: notely/notely-chart
   destination:
     server: https://kubernetes.default.svc
     namespace: notely
