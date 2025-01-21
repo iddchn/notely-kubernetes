@@ -1,0 +1,5 @@
+kube-prometheus-stack:
+  prometheusSpec:
+    serviceMonitorSelector:
+      matchLabels:
+        release: my-kube-prometheus-stack

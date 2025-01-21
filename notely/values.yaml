@@ -1,0 +1,121 @@
+#---------notely---------
+flask:
+  replicaCount: 2
+  kind: Deployment
+  metadata:
+    name: notely-flask
+    namespace: notely-flask
+  appName: notely-flask
+  containerName: notely-flask
+  image:
+    repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely
+    pullPolicy: IfNotPresent
+  ports:
+      protocol: TCP
+      port: 5001
+      targetPort: 5001
+  resources:
+    requests:
+      memory: "32Mi"
+      cpu: "250m"
+    limits:
+      memory: "128Mi"
+      cpu: "500m"
+  env:
+    mongoSvc: mongodb-app-headless.mongo.svc.cluster.local:27017
+  serviceType: ClusterIP
+
+#--------------nginx----------------
+nginx:
+  replicaCount: 2
+  kind: Deployment
+  metadata:
+    name: notely-nginx
+    namespace: notely-nginx
+  appName: notely-nginx
+  containerName: notely-nginx
+  image:
+    repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely
+    pullPolicy: IfNotPresent
+  ports:
+      protocol: TCP
+      port: 3000
+      targetPort: 80
+  resources:
+    requests:
+      memory: "32Mi"
+      cpu: "250m"
+    limits:
+      memory: "128Mi"
+      cpu: "500m"
+  serviceType: ClusterIP
+
+#---------- Ingress ----------
+ingress:
+  nginxServiceName: demo-crm-ingress
+  argocdServiceName: argocd-ingress
+  nginxNameSpace: dem-crm
+  argocdNameSpace: argocd
+  enabled: true
+  nginxClassName: nginx
+  argocdClassName: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  nginxRules:
+    - host: idanrcm.ddns.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: demo-crm
+                port:
+                  number: 3000
+  tls:
+    - secretName: crm-tls
+      hosts:
+        - idanrcm.ddns.net
+
+#-------------mongodb--------------
+mongodb:
+  global:
+    storageClass: standard-rwo
+  labels:
+    app: mongodb
+  architecture: replicaset
+
+  auth:
+    enabled: true
+    rootUser: root
+    rootPassword: "123456"
+    replicaSetKey: "myKey123456"
+
+  replicaCount: 3
+
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "256Mi"
+    limits:
+      cpu: "375m"
+      memory: "512Mi"
+  systemLogVerbosity: 3
+
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 500Mi
+
+  arbiter:
+    enabled: false
+
+#-------------clusterIssuer--------------
+clusterIssuer:
+  metaDataName: letsencrypt-prod
+  server: https://acme-v02.api.letsencrypt.org/directory
+  email: idancohen55@gmail.com
+  privateKeySecretRef: letsencrypt-prod-key
+  solversClass: nginx

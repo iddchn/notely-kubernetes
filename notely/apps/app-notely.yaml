@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: notely
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@gitlab.com:idancohen55/argocd-demo-crm-apps.git
+    targetRevision: HEAD
+    path: crm-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: notely
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

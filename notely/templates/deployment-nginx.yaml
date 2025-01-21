@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include .Values.nginx.metadata.name }}
+  namespace: {{ .Values.nginx.metadata.namespace }}
+  labels:
+    app: {{ .Values.nginx.appName }}
+spec:
+{{/*  {{- if not .Values.nginx.autoscaling.enabled }}*/}}
+  replicas: {{ .Values.nginx.replicaCount }}
+{{/*  {{- end }}*/}}
+  selector:
+    matchLabels:
+      app: {{ .Values.nginx.appName }}
+  template:
+    metadata:
+      name: {{ .Values.nginx.appName }}
+      labels:
+        app: {{ .Values.nginx.appName }}
+    spec:
+      containers:
+        - name: {{ .Values.nginx.containerName }}
+          image: "{{ .Values.nginx.image.repository }}:{{ .Chart.AppVersion | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.nginx.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.nginx.ports.port }}
+          resources:
+            {{- toYaml .Values.nginx.resources | nindent 12 }}

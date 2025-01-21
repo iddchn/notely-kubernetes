@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include .Values.flask.metadata.name }}
+  namespace: {{ .Values.flask.metadata.namespace }}
+  labels:
+    app: {{ .Values.flask.appName }}
+spec:
+{{/*  {{- if not .Values.flask.autoscaling.enabled }}*/}}
+  replicas: {{ .Values.flask.replicaCount }}
+{{/*  {{- end }}*/}}
+  selector:
+    matchLabels:
+      app: {{ .Values.flask.appName }}
+  template:
+    metadata:
+      name: {{ .Values.flask.appName }}
+      labels:
+        app: {{ .Values.flask.appName }}
+    spec:
+      containers:
+        - name: {{ .Values.flask.containerName }}
+          image: "{{ .Values.flask.image.repository }}:{{ .Chart.AppVersion | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.flask.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.flask.ports.port }}
+          resources:
+            {{- toYaml .Values.flask.resources | nindent 12 }}
