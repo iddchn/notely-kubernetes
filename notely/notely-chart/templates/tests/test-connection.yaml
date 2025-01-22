@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "notely.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "notely.fullname" . }}:{{ .Values.flask.ports.port }}']
   restartPolicy: Never
