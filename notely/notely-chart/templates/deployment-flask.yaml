@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include .Values.flask.metadata.name }}
+  name: {{ .Values.flask.metadata.name }}
   namespace: {{ .Values.flask.metadata.namespace }}
   labels:
     app: {{ .Values.flask.appName }}
