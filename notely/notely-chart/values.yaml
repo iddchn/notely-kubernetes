@@ -1,10 +1,10 @@
 #---------flask---------
 flask:
-  replicaCount: 2
+  replicaCount: 3
   kind: Deployment
   metadata:
     name: notely-flask
-    namespace: notely-flask
+    namespace: notely
   appName: notely-flask
   containerName: notely-flask
   image:
@@ -27,11 +27,11 @@ flask:
 
 #--------------nginx----------------
 nginx:
-  replicaCount: 2
+  replicaCount: 3
   kind: Deployment
   metadata:
     name: notely-nginx
-    namespace: notely-nginx
+    namespace: notely
   appName: notely-nginx
   containerName: notely-nginx
   image:
