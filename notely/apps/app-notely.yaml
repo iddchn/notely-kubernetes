@@ -11,7 +11,7 @@ spec:
     path: notely
   destination:
     server: https://kubernetes.default.svc
-    namespace: notely
+    namespace: notely/notely-chart
   syncPolicy:
     automated:
       prune: true
