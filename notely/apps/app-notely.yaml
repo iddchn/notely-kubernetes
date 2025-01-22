@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: git@github.com:iddchn/notely-kubernetes.git
     targetRevision: HEAD
-    path: notely/notely-chart
+    path: notely
   destination:
     server: https://kubernetes.default.svc
     namespace: notely
