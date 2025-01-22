@@ -1,4 +1,4 @@
-#---------notely---------
+#---------flask---------
 flask:
   replicaCount: 2
   kind: Deployment
@@ -8,7 +8,7 @@ flask:
   appName: notely-flask
   containerName: notely-flask
   image:
-    repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely
+    repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely-back
     pullPolicy: IfNotPresent
   ports:
       protocol: TCP
@@ -35,7 +35,7 @@ nginx:
   appName: notely-nginx
   containerName: notely-nginx
   image:
-    repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely
+    repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely-front
     pullPolicy: IfNotPresent
   ports:
       protocol: TCP
