@@ -3,3 +3,5 @@ kube-prometheus-stack:
     serviceMonitorSelector:
       matchLabels:
         release: my-kube-prometheus-stack
+  crds:
+    enabled: true
