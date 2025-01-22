@@ -119,3 +119,14 @@ clusterIssuer:
   email: idancohen55@gmail.com
   privateKeySecretRef: letsencrypt-prod-key
   solversClass: nginx
+
+#-------------storageClass--------------
+storageClass:
+  name: ebs-sc                     # Name of the StorageClass
+  isDefault: true                 # Set to true if this StorageClass should be the cluster default
+  provisioner: ebs.csi.aws.com     # CSI provisioner for EBS volumes
+  type: gp3                        # EBS volume type (gp2, gp3, io1, etc.)
+  fsType: ext4                     # File system type (ext4 or xfs)
+  encrypted: "true"                # encrypt data in the volume
+  allowVolumeExpansion: true       # Allows resizing of the volumes
+  volumeBindingMode: WaitForFirstConsumer
