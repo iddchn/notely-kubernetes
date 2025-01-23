@@ -130,4 +130,4 @@ storageClass:
   fsType: ext4                     # File system type (ext4 or xfs)
   encrypted: "true"                # encrypt data in the volume
   allowVolumeExpansion: true       # Allows resizing of the volumes
-  volumeBindingMode: WaitForFirstConsumer
+  volumeBindingMode: Immediate
