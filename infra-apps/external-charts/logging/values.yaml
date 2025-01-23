@@ -4,12 +4,14 @@ elasticsearch:
   minimumMasterNodes: 1
   volumeClaimTemplate:
     accessModes: [ "ReadWriteOnce" ]
+    storageClassName: "ebs-cs"
     resources:
       requests:
         storage: 1Gi
 
 #---------------fluent-bit----------------
 fluent-bit:
+
   resources:
     limits:
       cpu: 100m
