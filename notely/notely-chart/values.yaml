@@ -79,7 +79,7 @@ ingress:
   tls:
     - secretName: notely-tls
       hosts:
-        - idanrcm.ddns.net
+        - notely.ddns.net
 
 #-------------mongodb--------------
 mongodb:
