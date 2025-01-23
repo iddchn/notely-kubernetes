@@ -60,6 +60,11 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
   nginxRules:
     - host: idanrcm.ddns.net
       http:
@@ -72,7 +77,7 @@ ingress:
                 port:
                   number: 3000
   tls:
-    - secretName: crm-tls
+    - secretName: notely-tls
       hosts:
         - idanrcm.ddns.net
 
