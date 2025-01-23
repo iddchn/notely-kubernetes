@@ -5,6 +5,6 @@ metadata:
   namespace: {{ .Values.ingress.nameSpace }}
   annotations: {{- toYaml .Values.ingress.annotations | nindent 4 }}
 spec:
-  ingressClassName: {{ .Values.ingress.serviceName }}
+  ingressClassName: {{ .Values.ingress.className }}
   rules: {{- toYaml .Values.ingress.nginxRules | nindent 4}}
   tls: {{- toYaml .Values.ingress.tls | nindent 4}}
