@@ -53,7 +53,7 @@ nginx:
 #---------- Ingress ----------
 ingress:
   serviceName: notely-ingress
-  nameSpace: argocd
+  nameSpace: notely
   enabled: true
   className: nginx
 
@@ -68,7 +68,7 @@ ingress:
             pathType: Prefix
             backend:
               service:
-                name: demo-crm
+                name: notely
                 port:
                   number: 3000
   tls:
