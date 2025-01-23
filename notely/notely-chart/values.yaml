@@ -1,6 +1,6 @@
 #---------flask---------
 flask:
-  replicaCount: 3
+  replicaCount: 2
   kind: Deployment
   metadata:
     name: notely-flask
@@ -27,7 +27,7 @@ flask:
 
 #--------------nginx----------------
 nginx:
-  replicaCount: 3
+  replicaCount: 2
   kind: Deployment
   metadata:
     name: notely-nginx
@@ -90,7 +90,7 @@ mongodb:
     rootPassword: "123456"
     replicaSetKey: "myKey123456"
 
-  replicaCount: 3
+  replicaCount: 2
 
   resources:
     requests:
@@ -108,7 +108,7 @@ mongodb:
     size: 500Mi
 
   arbiter:
-    enabled: false
+    enabled: true
 
 #-------------clusterIssuer--------------
 clusterIssuer:
