@@ -73,7 +73,7 @@ ingress:
             pathType: Prefix
             backend:
               service:
-                name: notely
+                name: notely-nginx
                 port:
                   number: 3000
   tls:
