@@ -83,6 +83,8 @@ ingress:
 
 #-------------mongodb--------------
 mongodb:
+  global:
+    storageClass: ebs-sc
   labels:
     app: mongodb
   architecture: replicaset
