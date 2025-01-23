@@ -84,7 +84,7 @@ ingress:
 #-------------mongodb--------------
 mongodb:
   global:
-    storageClass: standard-rwo
+    storageClass: ebs-sc
   labels:
     app: mongodb
   architecture: replicaset
