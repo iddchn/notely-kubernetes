@@ -66,7 +66,7 @@ ingress:
     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
   nginxRules:
-    - host: idanrcm.ddns.net
+    - host: notely.ddns.net
       http:
         paths:
           - path: /
