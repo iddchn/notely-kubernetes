@@ -21,8 +21,6 @@ flask:
     limits:
       memory: "128Mi"
       cpu: "500m"
-  env:
-    mongoSvc: mongodb-app-headless.mongo.svc.cluster.local:27017
   serviceType: ClusterIP
 
 #--------------nginx----------------
