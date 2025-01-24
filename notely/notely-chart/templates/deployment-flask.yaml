@@ -26,3 +26,5 @@ spec:
             - containerPort: {{ .Values.flask.ports.port }}
           resources:
             {{- toYaml .Values.flask.resources | nindent 12 }}
+          env:
+            {{- toYaml .Values.flask.env | nindent 12 }}

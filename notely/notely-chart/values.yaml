@@ -21,6 +21,9 @@ flask:
     limits:
       memory: "128Mi"
       cpu: "500m"
+  env:
+    MONGO_URI: idan_notely_secrets
+    AWS_REGION: ap-south-1
   serviceType: ClusterIP
 
 #--------------nginx----------------
