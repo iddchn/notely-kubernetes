@@ -27,6 +27,10 @@ flask:
     - name: AWS_REGION
       value: "ap-south-1"
   serviceType: ClusterIP
+  serviceAccount:
+    name: notely-secret-manager
+    roleArn: arn:aws:iam::600627353694:role/notely-secret-manager
+
 
 #--------------nginx----------------
 nginx:
