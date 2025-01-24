@@ -92,7 +92,7 @@ mongodb:
 
   auth:
     enabled: true
-    rootUser: root
+    rootUser: admin
     rootPassword: "123456"
     replicaSetKey: "myKey123456"
 
