@@ -114,7 +114,7 @@ mongodb:
     size: 500Mi
 
   arbiter:
-    enabled: true
+    enabled: false
 
 #-------------clusterIssuer--------------
 clusterIssuer:
