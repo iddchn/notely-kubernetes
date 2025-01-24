@@ -22,8 +22,8 @@ flask:
       memory: "128Mi"
       cpu: "500m"
   env:
-    MONGO_SECRET_NAME: idan_notely_secrets
-    AWS_REGION: ap-south-1
+    MONGO_SECRET_NAME: "idan_notely_secrets"
+    AWS_REGION: "ap-south-1"
   serviceType: ClusterIP
 
 #--------------nginx----------------
