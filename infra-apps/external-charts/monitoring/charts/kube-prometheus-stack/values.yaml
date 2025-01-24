@@ -2548,13 +2548,13 @@ prometheusOperator:
 
       ## Resource limits & requests
       ##
-      resources: {}
-      # limits:
-      #   cpu: 200m
-      #   memory: 200Mi
-      # requests:
-      #   cpu: 100m
-      #   memory: 100Mi
+      resources:
+       limits:
+         cpu: 200m
+         memory: 200Mi
+       requests:
+         cpu: 100m
+         memory: 100Mi
 
       # Required for use in managed kubernetes clusters (such as AWS EKS) with custom CNI (such as calico),
       # because control-plane managed by AWS cannot communicate with pods' IP CIDR and admission webhooks are not working
@@ -2889,13 +2889,13 @@ prometheusOperator:
 
   ## Resource limits & requests
   ##
-  resources: {}
-  # limits:
-  #   cpu: 200m
-  #   memory: 200Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 100Mi
+  resources:
+   limits:
+     cpu: 200m
+     memory: 200Mi
+   requests:
+     cpu: 100m
+     memory: 100Mi
 
   ## Operator Environment
   ##  env:
@@ -3034,13 +3034,13 @@ prometheusOperator:
     enableProbe: false
 
     # resource config for prometheusConfigReloader
-    resources: {}
-      # requests:
-      #   cpu: 200m
-      #   memory: 50Mi
-      # limits:
-      #   cpu: 200m
-      #   memory: 50Mi
+    resources:
+       requests:
+         cpu: 200m
+         memory: 50Mi
+       limits:
+         cpu: 200m
+         memory: 50Mi
 
   ## Thanos side-car image when configured
   ##
