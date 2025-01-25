@@ -18,6 +18,7 @@ spec:
       labels:
         app: {{ .Values.flask.appName }}
     spec:
+      serviceAccountName: {{ .Values.flask.serviceAccount.name }}
       containers:
         - name: {{ .Values.flask.containerName }}
           image: "{{ .Values.flask.image.repository }}:{{ .Chart.AppVersion | default .Chart.AppVersion }}"

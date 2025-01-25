@@ -29,8 +29,8 @@ flask:
   serviceType: ClusterIP
   serviceAccount:
     name: notely-secret-manager
-    roleArn: arn:aws:iam::600627353694:role/notely-secret-manager
-
+    roleArn: arn:aws:iam::600627353694:role/idan-eks-role-policy
+    environment: production
 
 #--------------nginx----------------
 nginx:
