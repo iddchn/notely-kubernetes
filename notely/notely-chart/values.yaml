@@ -29,6 +29,9 @@ flask:
   serviceType: ClusterIP
   serviceAccount:
     name: notely-secret-manager
+    roleArn: arn:aws:iam::600627353694:role/idan-eks-secret-manager-role
+    environment: production
+    automountServiceAccountToken: true
 
 #--------------nginx----------------
 nginx:
