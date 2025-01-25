@@ -84,6 +84,13 @@ ingress:
                 name: notely-nginx
                 port:
                   number: 3000
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: notely-flask
+                port:
+                  number: 5001
   tls:
     - secretName: notely-tls
       hosts:
