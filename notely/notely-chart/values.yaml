@@ -114,9 +114,12 @@ mongodb:
 
   auth:
     enabled: true
-    rootUser: admin
+    rootUser: root
     rootPassword: "123456"
     replicaSetKey: "myKey123456"
+    database: [flask-notely]
+    usernames: ["admin"]
+    passwords: ["123456"]
 
   replicaCount: 1
 
