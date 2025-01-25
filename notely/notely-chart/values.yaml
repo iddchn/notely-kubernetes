@@ -11,9 +11,9 @@ flask:
     repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely-back
     pullPolicy: IfNotPresent
   ports:
-      protocol: TCP
-      port: 5001
-      targetPort: 5001
+    protocol: TCP
+    port: 5001
+    targetPort: 5001
   resources:
     requests:
       memory: "32Mi"
@@ -31,6 +31,7 @@ flask:
     name: notely-secret-manager
     roleArn: arn:aws:iam::600627353694:role/idan-eks-role-policy
     environment: production
+    automountServiceAccountToken: true
 
 #--------------nginx----------------
 nginx:
