@@ -128,7 +128,7 @@ mongodb:
       cpu: "250m"
       memory: "256Mi"
     limits:
-      cpu: "375m"
+      cpu: "500m"
       memory: "512Mi"
   systemLogVerbosity: 3
 
