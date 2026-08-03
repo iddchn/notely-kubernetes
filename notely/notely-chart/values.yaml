@@ -26,6 +26,11 @@ flask:
       value: "idan_notely_secrets"
     - name: AWS_REGION
       value: "us-east-1"
+    # Entra ID SSO (public identifiers, not secrets)
+    - name: ENTRA_TENANT_ID
+      value: "504483c6-ab3b-408a-b4d3-152fa58976df"
+    - name: ENTRA_CLIENT_ID
+      value: "9c775da3-1c31-4ab4-9940-76d45b7d9a71"
   serviceType: ClusterIP
   serviceAccount:
     name: notely-secret-manager
