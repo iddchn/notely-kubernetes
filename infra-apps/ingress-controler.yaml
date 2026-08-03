@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:iddchn/notely-kubernetes.git
+    repoURL: https://github.com/iddchn/notely-kubernetes.git
     targetRevision: HEAD
     path: infra-apps/external-charts/ingress-nginx
     helm:

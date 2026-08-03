@@ -8,7 +8,7 @@ flask:
   appName: notely-flask
   containerName: notely-flask
   image:
-    repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely-back
+    repository: 533813050020.dkr.ecr.us-east-1.amazonaws.com/idan/notely-back
     pullPolicy: IfNotPresent
   ports:
     protocol: TCP
@@ -25,11 +25,11 @@ flask:
     - name: MONGO_SECRET_NAME
       value: "idan_notely_secrets"
     - name: AWS_REGION
-      value: "ap-south-1"
+      value: "us-east-1"
   serviceType: ClusterIP
   serviceAccount:
     name: notely-secret-manager
-    roleArn: arn:aws:iam::600627353694:role/idan-eks-secret-manager-role
+    roleArn: arn:aws:iam::533813050020:role/idan-eks-secret-manager-role
     environment: production
     automountServiceAccountToken: true
 
@@ -43,7 +43,7 @@ nginx:
   appName: notely-nginx
   containerName: notely-nginx
   image:
-    repository: 600627353694.dkr.ecr.ap-south-1.amazonaws.com/idan/notely-front
+    repository: 533813050020.dkr.ecr.us-east-1.amazonaws.com/idan/notely-front
     pullPolicy: IfNotPresent
   ports:
       protocol: TCP
@@ -115,11 +115,11 @@ mongodb:
   auth:
     enabled: true
     rootUser: root
-    rootPassword: "123456"
-    replicaSetKey: "myKey123456"
+    # Passwords come from the Terraform-managed secret (keys: mongodb-root-password,
+    # mongodb-passwords, mongodb-replica-set-key) — never commit credentials here.
+    existingSecret: notely-mongodb-auth
     databases: [flask-notely]
     usernames: ["admin"]
-    passwords: ["123456"]
 
   replicaCount: 1
 
