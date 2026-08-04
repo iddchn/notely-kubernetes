@@ -8,8 +8,13 @@ flask:
   appName: notely-flask
   containerName: notely-flask
   image:
-    repository: 533813050020.dkr.ecr.us-east-1.amazonaws.com/idan/notely-back
+    # ECR (rollback): uncomment the ECR repository and remove/comment the jfrog
+    # repository + pullSecrets to switch back.
+    # repository: 533813050020.dkr.ecr.us-east-1.amazonaws.com/idan/notely-back
+    repository: idandev.jfrog.io/notely-docker-local/idan/notely-back
     pullPolicy: IfNotPresent
+    pullSecrets:
+      - name: jfrog-pull-secret
   ports:
     protocol: TCP
     port: 5001
@@ -48,8 +53,13 @@ nginx:
   appName: notely-nginx
   containerName: notely-nginx
   image:
-    repository: 533813050020.dkr.ecr.us-east-1.amazonaws.com/idan/notely-front
+    # ECR (rollback): uncomment the ECR repository and remove/comment the jfrog
+    # repository + pullSecrets to switch back.
+    # repository: 533813050020.dkr.ecr.us-east-1.amazonaws.com/idan/notely-front
+    repository: idandev.jfrog.io/notely-docker-local/idan/notely-front
     pullPolicy: IfNotPresent
+    pullSecrets:
+      - name: jfrog-pull-secret
   ports:
       protocol: TCP
       port: 3000

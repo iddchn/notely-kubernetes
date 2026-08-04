@@ -18,6 +18,10 @@ spec:
       labels:
         app: {{ .Values.nginx.appName }}
     spec:
+      {{- with .Values.nginx.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Values.nginx.containerName }}
           image: "{{ .Values.nginx.image.repository }}:{{ .Chart.AppVersion | default .Chart.AppVersion }}"

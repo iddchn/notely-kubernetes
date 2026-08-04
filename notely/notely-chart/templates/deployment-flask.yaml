@@ -19,6 +19,10 @@ spec:
         app: {{ .Values.flask.appName }}
     spec:
       serviceAccountName: {{ .Values.flask.serviceAccount.name }}
+      {{- with .Values.flask.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Values.flask.containerName }}
           image: "{{ .Values.flask.image.repository }}:{{ .Chart.AppVersion | default .Chart.AppVersion }}"
