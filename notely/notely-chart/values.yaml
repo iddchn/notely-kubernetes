@@ -11,7 +11,7 @@ flask:
     # ECR (rollback): uncomment the ECR repository and remove/comment the jfrog
     # repository + pullSecrets to switch back.
     # repository: 533813050020.dkr.ecr.us-east-1.amazonaws.com/idan/notely-back
-    repository: idandev.jfrog.io/notely-docker-local/idan/notely-back
+    repository: idandev.jfrog.io/notely-docker-local-docker-local/idan/notely-back
     pullPolicy: IfNotPresent
     pullSecrets:
       - name: jfrog-pull-secret
@@ -56,7 +56,7 @@ nginx:
     # ECR (rollback): uncomment the ECR repository and remove/comment the jfrog
     # repository + pullSecrets to switch back.
     # repository: 533813050020.dkr.ecr.us-east-1.amazonaws.com/idan/notely-front
-    repository: idandev.jfrog.io/notely-docker-local/idan/notely-front
+    repository: idandev.jfrog.io/notely-docker-local-docker-local/idan/notely-front
     pullPolicy: IfNotPresent
     pullSecrets:
       - name: jfrog-pull-secret
