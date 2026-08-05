@@ -119,52 +119,6 @@ ingress:
       hosts:
         - notely.ddns.net
 
-#-------------mongodb--------------
-mongodb:
-  # Broadcom removed versioned tags from docker.io/bitnami/* (late 2025);
-  # the archived copies live under bitnamilegacy/* (frozen, no updates).
-  image:
-    repository: bitnamilegacy/mongodb
-    tag: 8.0.4-debian-12-r0
-  global:
-    storageClass: ebs-sc
-    security:
-      # Required by the Bitnami chart to accept a non-"bitnami/" repository
-      # (bitnamilegacy is Broadcom's own archive of the same images).
-      allowInsecureImages: true
-  labels:
-    app: mongodb
-  architecture: replicaset
-
-  auth:
-    enabled: true
-    rootUser: root
-    # Passwords come from the Terraform-managed secret (keys: mongodb-root-password,
-    # mongodb-passwords, mongodb-replica-set-key) — never commit credentials here.
-    existingSecret: notely-mongodb-auth
-    databases: [flask-notely]
-    usernames: ["admin"]
-
-  replicaCount: 1
-
-  resources:
-    requests:
-      cpu: "250m"
-      memory: "256Mi"
-    limits:
-      cpu: "500m"
-      memory: "512Mi"
-  systemLogVerbosity: 3
-
-  persistence:
-    enabled: true
-    accessModes:
-      - ReadWriteOnce
-    size: 500Mi
-
-  arbiter:
-    enabled: false
-
 #-------------clusterIssuer--------------
 clusterIssuer:
   metaDataName: letsencrypt-prod
